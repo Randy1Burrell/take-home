@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import NavBar from '../navbar'
+import TokenList from '../../containers/tokenList'
 import TokenForm from '../../containers/createToken'
 import './App.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
                 }
             />
             <Switch>
+                <Route path='/' component={TokenList} />
                 <Route path='/createtoken' component={TokenForm} />
             </Switch>
           </div>
