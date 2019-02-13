@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import NavBar from '../navbar'
+import TokenForm from '../../containers/createToken'
 import './App.css';
 
 class App extends Component {
@@ -16,13 +17,15 @@ class App extends Component {
                             name: 'home'
                         },
                         {
-                            path: 'createtoken',
-                            nmae: 'add token'
+                            path: '/createtoken',
+                            name: 'add token'
                         }
                     ]
                 }
             />
-              Hello, World
+            <Switch>
+                <Route path='/createtoken' component={TokenForm} />
+            </Switch>
           </div>
         </BrowserRouter>
     );
