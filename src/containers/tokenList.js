@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ListTokens from '../components/listTokens'
-import { favouriteToken, unfavouriteToken } from '../actions/index'
+import { store } from '../utils'
+import { getTokens, favouriteToken, unfavouriteToken } from '../actions/index'
 
 class TokenList extends Component {
+    componentDidMount () {
+        store.dispatch(getTokens())
+    }
     createTokenList() {
         const { history } = this.props
         return (
@@ -36,6 +40,7 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({
         favouriteToken: favouriteToken,
         unfavouriteToken: unfavouriteToken,
+        getTokens: getTokens
     }, dispatch)
 }
 

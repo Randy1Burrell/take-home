@@ -76,7 +76,7 @@ class ListTokens extends Component {
                             </React.Fragment>
                     )}
                     {
-                        other && (
+                        other > 0 && (
                             <React.Fragment>
                                 <ul className="list-group list-group-flush">
                                     <Token
