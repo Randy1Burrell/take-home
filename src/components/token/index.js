@@ -35,12 +35,15 @@ class Token extends Component {
             tokens = this.props.tokens
 
         for (let key in tokens) {
+            const tk = tokens[key]
             list.push(
                 <li
                     key={key}
                     className="list-group-item"
+                    style={{backgroundColor: tk.type ? ('red'):('#fff')}}
                 >
                     {tokens[key]['name']}
+                    {tk.type && (<img src={tk.logo} alt={tk.name} />)}
                     <button
                         type="button"
                         style={{margin: '0 10px'}}
@@ -51,6 +54,7 @@ class Token extends Component {
                     >
                         view
                     </button>
+                    {!tokens[key].type && (
                     <button
                         type="button"
                         className={`btn ${this.props.buttonClass} float-right`}
@@ -60,6 +64,7 @@ class Token extends Component {
                     >
                         {this.props.buttonText}
                     </button>
+                    )}
                 </li>
             )
         }

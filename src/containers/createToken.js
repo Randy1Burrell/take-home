@@ -28,10 +28,17 @@ class TokenForm extends Component {
         event.preventDefault()
         setTimeout(this.setSubmit, 3500)
         const { name, price, symbol, volume } = this.state
+
+        if (symbol.toUpperCase() !== symbol) {
+            this.setSubmit('SYMBOL')
+            return
+        }
+
         if (!name || !price || !symbol || !volume) {
             this.setSubmit('invalid')
             return
         }
+
         this.props.submitToken(this.state)
         this.setSubmit(this.props.submit)
         this.handleReset(event)
@@ -83,6 +90,9 @@ class TokenForm extends Component {
                     <div className={`alert alert-${(sub && sub.status === 200)? 'success' : 'warning'} alert-dismissible fade show`} role="alert">
                         {sub && sub.status === 200 && (
                             <strong>Submit Successful!</strong>
+                        )}
+                        {sub === 'SYMBOL' && (
+                            <strong>Symbol needs to be uppercase!!</strong>
                         )}
                         {sub === 'invalid' && (
                             <strong>All Values Required Mate!!</strong>
